@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.scss';
+import { Calories } from './components/Calories';
 import { MainCalculactor } from './components/MainCalculator';
 import './index.scss'
 
 function App() {
   return (
     <div className='container'>
-      <MainCalculactor/>
+      <Calories/>
+      {/* <MainCalculactor/> */}
     </div>
   );
 }

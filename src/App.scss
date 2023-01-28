@@ -14,6 +14,18 @@
     align-items: center;
 }
 
+%button {
+    background-color: rgb(55, 65, 81);
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid rgb(253, 186, 116);
+    &:hover {
+        background-color: rgb(75, 85, 99);
+    }
+    transition: all 300ms;
+}
+
 .main_calculator,
 .main_calc_results {
     width: 450px;
@@ -24,15 +36,7 @@
     padding: 50px;
     color: white;
     .main_calc_btn {
-        background-color: rgb(55, 65, 81);
-        padding: 10px 20px;
-        border-radius: 10px;
-        cursor: pointer;
-        border: 1px solid rgb(253, 186, 116);
-        &:hover {
-            background-color: rgb(75, 85, 99);
-        }
-        transition: all 300ms;
+        @extend %button
     }
 }
 
@@ -41,4 +45,15 @@
     height: min-content;
     margin-top: 0;
     padding-top: 0;
+}
+
+.calories_form {
+    background-color: rgb(17, 24, 39);
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 50px;
+    color: white;
+    .calories_btn {
+        @extend %button
+    }
 }

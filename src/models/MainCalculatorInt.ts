@@ -13,3 +13,9 @@ export interface MainCalculatorResultsInt {
     miffin: number;
     harris: number;
 }
+
+export interface CaloriesInt {
+    calories: number;
+    eating: string;
+    dish: string
+}
