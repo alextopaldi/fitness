@@ -1,8 +1,9 @@
-.container {
+$primary-color: rgb(55, 65, 81);
+.wrapper {
     padding-left: 50px;
     padding-right: 50px;
     width: 100%;
-    max-width: max-content;
+    max-width: 1170px;
     margin: 0 auto;
 }
 
@@ -19,6 +20,8 @@
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
+    width: 120px;
+    height: 50px;
     border: 1px solid rgb(253, 186, 116);
     &:hover {
         background-color: rgb(75, 85, 99);
@@ -36,7 +39,7 @@
     padding: 50px;
     color: white;
     .main_calc_btn {
-        @extend %button
+        @extend %button;
     }
 }
 
@@ -48,12 +51,72 @@
 }
 
 .calories_form {
-    background-color: rgb(17, 24, 39);
-    margin: 0 auto;
-    margin-top: 50px;
-    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 100px;
     color: white;
     .calories_btn {
-        @extend %button
+        @extend %button;
+        margin-top: 12px;
+    }
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(17, 24, 39);
+}
+
+.calories_content {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .form_chart {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .calories_dishes {
+        margin: 0 100px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .calories_dish {
+        background-color: $primary-color;
+        border: 1px solid rgb(253, 186, 116);
+        border-width: 1px;
+        border-radius: 3px;
+        padding: 6px;
+        padding-left: 16px;
+        height: auto;
+        width: 300px;
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        transition: height 0.15s ease-out;
+        .dish_value {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .chart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .calories_results {
+            color: white;
+        }
     }
 }

@@ -3,13 +3,13 @@
 @tailwind utilities;
 @layer components {
     .inp-text {
-        @apply block w-[300px] my-3 h-10 px-3 py-1.5 text-base font-normal text-white bg-gray-700 bg-clip-padding border border-solid border-orange-300 rounded transition ease-in-out m-0;
+        @apply block w-[300px] my-3 h-[38px] px-3 py-1.5 text-base font-normal text-white bg-gray-700 bg-clip-padding border border-solid border-orange-300 rounded transition ease-in-out m-0;
     }
     .inp-text:focus {
         @apply text-white bg-gray-600 border-orange-300 outline-none
     }
     .select-opt {
-        @apply block w-[300px] my-3 h-10 px-3 py-1.5 text-base font-normal text-white bg-gray-700 bg-clip-padding bg-no-repeat border border-solid border-orange-300 rounded transition ease-in-out m-0;
+        @apply block w-[300px] my-3 h-[38px] px-3 py-1.5 text-base font-normal text-white bg-gray-700 bg-clip-padding bg-no-repeat border border-solid border-orange-300 rounded transition ease-in-out m-0;
     }
     .select-opt:focus {
         @apply text-white bg-gray-600 border-orange-300 outline-none
