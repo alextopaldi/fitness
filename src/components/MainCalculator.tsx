@@ -1,7 +1,44 @@
-import React, { useState } from "react"
+import axios from "axios"
+import React, { useEffect, useState } from "react"
 import { MainCalculatorInt, MainCalculatorResultsInt } from "../models/MainCalculatorInt"
+import { IProductInfoSearchResult } from "../models/ProductSearchResult"
+import { FoodSearch } from "./FoodSearch"
+// import { FatSecretClient } from "fatsecret-api";
 
 export function MainCalculactor() {
+
+ 
+
+    // const fatSecretClient = new FatSecretClient({
+    //     clientId: "70e59ff87c21428587c216e4965e50ff",
+    //     clientSecret: "1a7148a67cdd46c6b7c5d2f58901b1d1",
+    //     scope: "basic",
+    // });
+
+    
+    // async function Search() {
+    //   await fatSecretClient.getFood({ food_id: "4278773" });
+      
+    // }
+
+  
+
+    // const apiKey = 'ebc7bffae2434085b102d7c100a3a7c3'
+
+    // async function startSearch() {
+    //   try {
+    //     const response1 = await axios.get('https://api.spoonacular.com/food/ingredients/search?apiKey='+apiKey+'&query=chocolate&number=3')
+    //     const response2 = await axios.get<IProductInfoSearchResult>('https://api.spoonacular.com/food/ingredients/19081/information?amount=1&apiKey='+apiKey)
+    //     console.log(response1.data.results, response2.data.nutrition.nutrients.find(item => item.name=='Calories'))
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
+
+    // useEffect( () => {
+    //   startSearch()
+    // }, [])
+
 
     const [formValues, setFormValues] = useState<MainCalculatorInt>({
       sex: '',
@@ -47,61 +84,67 @@ export function MainCalculactor() {
 
     return (
       <>
-        <div className="main_calculator">
-          <form action="" className='calc' onSubmit={SubmitHandler}>
-            <div>
-              <label htmlFor="sexMale" className='form-check-label inline-block'>
-                <input value={'male'} onChange={event => setFormValues(prev =>  ({ ...prev, sex: event.target.value}))}
-                className='form-check-input  appearance-none rounded-full h-4 w-4 border border-orange-300 bg-gray-700 checked:bg-orange-300 checked:border-orange-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mx-2 cursor-pointer' type="radio" name="sex"  id="sexMale"></input>
-                Мужской
-              </label>
-              <label htmlFor="sexFemale" className='form-check-label inline-block'>
-                <input value={'female'} onChange={event => setFormValues(prev =>  ({ ...prev, sex: event.target.value}))}
-                className='form-check-input appearance-none rounded-full h-4 w-4 border border-orange-300  bg-gray-700 checked:bg-orange-300 checked:border-orange-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mx-2 cursor-pointer' type="radio" name="sex"  id="sexFemale"></input>
-                Женский
-              </label>
+        <div className='background'>
+          
+          <div className="wrapper">
+            <div className="main_calculator">
+            <FoodSearch></FoodSearch>
+              <form action="" className='calc' onSubmit={SubmitHandler}>
+                <div>
+                  <label htmlFor="sexMale" className='form-check-label inline-block'>
+                    <input value={'male'} onChange={event => setFormValues(prev =>  ({ ...prev, sex: event.target.value}))}
+                    className='form-check-input  appearance-none rounded-full h-4 w-4 border border-orange-300 bg-gray-700 checked:bg-orange-300 checked:border-orange-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mx-2 cursor-pointer' type="radio" name="sex"  id="sexMale"></input>
+                    Мужской
+                  </label>
+                  <label htmlFor="sexFemale" className='form-check-label inline-block'>
+                    <input value={'female'} onChange={event => setFormValues(prev =>  ({ ...prev, sex: event.target.value}))}
+                    className='form-check-input appearance-none rounded-full h-4 w-4 border border-orange-300  bg-gray-700 checked:bg-orange-300 checked:border-orange-300 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mx-2 cursor-pointer' type="radio" name="sex"  id="sexFemale"></input>
+                    Женский
+                  </label>
+                </div>
+                <label htmlFor="age">
+                  Возраст:
+                  <input className='inp-text' type="text" id='age' value={formValues?.age} onChange={event => setFormValues(prev =>  ({ ...prev, age: Number(event.target.value)}))}/>
+                </label>
+                <label htmlFor="height">
+                  Рост:
+                  <input className='inp-text' type="text" id='height' value={formValues?.height} onChange={event => setFormValues(prev =>  ({ ...prev, height: Number(event.target.value)}))}/>
+                </label>
+                <label htmlFor="weight">
+                  Текущий вес:
+                  <input className='inp-text' type="text" id='weight' value={formValues?.weight} onChange={event => setFormValues(prev =>  ({ ...prev, weight: Number(event.target.value)}))} />
+                </label>
+                <label htmlFor="fat">
+                  Процент жира:
+                  <input className='inp-text' type="text" id='fat' value={formValues?.fat} onChange={event => setFormValues(prev =>  ({ ...prev, fat: Number(event.target.value)}))} />
+                </label>
+                <label htmlFor="activity">
+                  Уровень физических нагрузок:
+                  <select onChange={event => setFormValues(prev =>  ({ ...prev, activity: Number(event.target.value)}))} className='select-opt' name="activity" id="activity">
+                    <option value={1.2}>Минимум нагрузки</option>
+                    <option value={1.38}>Легкая нагрузка</option>
+                    <option value={1.46}>Умеренная нагрузка</option>
+                    <option value={1.55}>Интенсивная нагрузка</option>
+                    <option value={1.9}>Экстримальная нагрузка</option>
+                  </select>
+                </label>
+                <label htmlFor="wish">
+                  Вы добиваетесь:
+                  <select onChange={event => setFormValues(prev =>  ({ ...prev, wish: Number(event.target.value)}))} className='select-opt' name="wish" id="wish">
+                    <option value={1.2}>Набора массы</option>
+                    <option value={0.85}>Похудения</option>
+                  </select>
+                </label>
+                <input className="main_calc_btn" type="submit" value="Рассчитать" />
+              </form>
             </div>
-            <label htmlFor="age">
-              Возраст:
-              <input className='inp-text' type="text" id='age' value={formValues?.age} onChange={event => setFormValues(prev =>  ({ ...prev, age: Number(event.target.value)}))}/>
-            </label>
-            <label htmlFor="height">
-              Рост:
-              <input className='inp-text' type="text" id='height' value={formValues?.height} onChange={event => setFormValues(prev =>  ({ ...prev, height: Number(event.target.value)}))}/>
-            </label>
-            <label htmlFor="weight">
-              Текущий вес:
-              <input className='inp-text' type="text" id='weight' value={formValues?.weight} onChange={event => setFormValues(prev =>  ({ ...prev, weight: Number(event.target.value)}))} />
-            </label>
-            <label htmlFor="fat">
-              Процент жира:
-              <input className='inp-text' type="text" id='fat' value={formValues?.fat} onChange={event => setFormValues(prev =>  ({ ...prev, fat: Number(event.target.value)}))} />
-            </label>
-            <label htmlFor="activity">
-              Уровень физических нагрузок:
-              <select onChange={event => setFormValues(prev =>  ({ ...prev, activity: Number(event.target.value)}))} className='select-opt' name="activity" id="activity">
-                <option value={1.2}>Минимум нагрузки</option>
-                <option value={1.38}>Легкая нагрузка</option>
-                <option value={1.46}>Умеренная нагрузка</option>
-                <option value={1.55}>Интенсивная нагрузка</option>
-                <option value={1.9}>Экстримальная нагрузка</option>
-              </select>
-            </label>
-            <label htmlFor="wish">
-              Вы добиваетесь:
-              <select onChange={event => setFormValues(prev =>  ({ ...prev, wish: Number(event.target.value)}))} className='select-opt' name="wish" id="wish">
-                <option value={1.2}>Набора массы</option>
-                <option value={0.85}>Похудения</option>
-              </select>
-            </label>
-            <input className="main_calc_btn" type="submit" value="Рассчитать" />
-          </form>
+            {resVision && <div className="main_calc_results">
+              <p>Для поддержания веса: <b>{res.middle}</b></p>
+              <p>Формула Миффлина-Сан Жеора: <b>{res.miffin}</b></p>
+              <p>Формула Харриса-Бенедикта: <b>{res.harris}</b></p>
+            </div>}
+          </div>
         </div>
-        {resVision && <div className="main_calc_results">
-          <p>Для поддержания веса: <b>{res.middle}</b></p>
-          <p>Формула Миффлина-Сан Жеора: <b>{res.miffin}</b></p>
-          <p>Формула Харриса-Бенедикта: <b>{res.harris}</b></p>
-        </div>}
       </>
     )
 }

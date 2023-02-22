@@ -118,9 +118,13 @@ export function Calories() {
         { name: 'Group B', value: vl2 }
     ];
 
+    const video = require('../media/gym.mp4')
+
     return (
         <>
+        
         <div className='background'>
+        <video className='gym-video' src={video} autoPlay loop muted></video>
             <div className='wrapper'>
                 <div className='calories_content'>
                     <div className='form_chart'>
@@ -169,28 +173,28 @@ export function Calories() {
                         <div className='calories_dish'>
                             <div className='dish_value'>
                                 <p>Завтрак - <b>{dishCalories.breakfast} кал.</b> {dishPercent.breakfast}%</p>
-                                <FontAwesomeIcon onClick={() => DishesVision('breakfast')} className="h-[20px] text-white" icon={iconDish1}/>
+                                <FontAwesomeIcon onClick={() => DishesVision('breakfast')} className="h-[20px] text-white cursor-pointer" icon={iconDish1}/>
                             </div>
                             {dishVision.breakfast && DishesFilter('Завтрак').map((dish: CaloriesInt, index:string) => dish.calories != 0 && <EatingPages key={index} dish={dish}></EatingPages>)}
                         </div>
                         <div className='calories_dish'>
                             <div className='dish_value'>
                                 <p>Обед - <b>{dishCalories.lanch} кал.</b> {dishPercent.lanch}%</p>
-                                <FontAwesomeIcon onClick={() => DishesVision('lanch')} className="h-[20px] text-white" icon={iconDish2}/>
+                                <FontAwesomeIcon onClick={() => DishesVision('lanch')} className="h-[20px] text-white cursor-pointer" icon={iconDish2}/>
                             </div>
                             {dishVision.lanch && DishesFilter('Обед').map((dish: CaloriesInt, index:string) => dish.calories != 0 && <EatingPages key={index} dish={dish}></EatingPages>)}
                         </div>
                         <div className='calories_dish'>
                             <div className='dish_value'>
                                 <p>Ужин - <b>{dishCalories.dinner} кал.</b> {dishPercent.dinner}%</p>
-                                <FontAwesomeIcon onClick={() => DishesVision('dinner')} className="h-[20px] text-white" icon={iconDish3}/>
+                                <FontAwesomeIcon onClick={() => DishesVision('dinner')} className="h-[20px] text-white cursor-pointer" icon={iconDish3}/>
                             </div>
                             {dishVision.dinner && DishesFilter('Ужин').map((dish: CaloriesInt, index:string) => dish.calories != 0 && <EatingPages key={index} dish={dish}></EatingPages>)}
                         </div>
                         <div className='calories_dish'>
                             <div className='dish_value'>
                                 <p>Перекус/другое - <b>{dishCalories.snack} кал.</b> {dishPercent.snack}%</p>
-                                <FontAwesomeIcon onClick={() => DishesVision('snack')} className="h-[20px] text-white" icon={iconDish4}/>
+                                <FontAwesomeIcon onClick={() => DishesVision('snack')} className="h-[20px] text-white cursor-pointer" icon={iconDish4}/>
                             </div>
                             {dishVision.snack && DishesFilter('Перекус/Другое').map((dish: CaloriesInt, index:string) => dish.calories != 0 && <EatingPages key={index} dish={dish}></EatingPages>)}
                         </div>
